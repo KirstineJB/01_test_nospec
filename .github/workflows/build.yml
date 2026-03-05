@@ -43,6 +43,7 @@ jobs:
         shell: powershell
         working-directory: TodoApi
         run: |
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"KirstineJB_01_test_nospec" /o:"kirstine13" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          dotnet build
+          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"KirstineJB_01_test_nospec" /o:"kirstine13" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.exclusions="**/node_modules/**"
+          dotnet build "${{ github.workspace }}\TodoApi\TodoApi.csproj"
           ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
