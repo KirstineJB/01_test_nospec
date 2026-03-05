@@ -41,6 +41,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
+        working-directory: TodoApi
         run: |
           ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"KirstineJB_01_test_nospec" /o:"kirstine13" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           dotnet build
